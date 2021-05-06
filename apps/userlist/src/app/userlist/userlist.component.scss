@@ -1,0 +1,18 @@
+.warning {
+    color: #ca4d4d;
+}
+
+.right {
+    text-align: right;
+}
+
+tr {
+    th:last-of-type {
+        text-align: center;
+        width: 4em;
+    }
+    td:last-of-type {
+        text-align: center;
+        width: 4em;
+    }
+}

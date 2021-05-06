@@ -1,0 +1,15 @@
+<h1>Użytkownicy</h1>
+<p *ngIf="errorText" class="warning">{{ errorText }}</p>
+<p *ngIf="clients" class="right">Ilość klientów: {{ clients.length }}</p>
+<table>
+    <thead>
+        <tr>
+            <th>Imię</th><th>Nazwisko</th><th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="clients">
+        <tr *ngFor="let client of clients">
+            <td>{{ client.name }}</td><td>{{ client.surname }}</td><td><a (click)="delete(client.id)">Usuń</a></td>
+        </tr>
+    </tbody>
+</table>

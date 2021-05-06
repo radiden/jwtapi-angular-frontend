@@ -32,34 +32,59 @@
     }
   },
   "projects": {
-    "jwtapi-frontend": {
+    "jwtapi-lib": {
+      "projectType": "library",
+      "root": "libs/jwtapi-lib",
+      "sourceRoot": "libs/jwtapi-lib/src",
+      "prefix": "jwtapi-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/jwtapi-lib/src/**/*.ts",
+              "libs/jwtapi-lib/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/jwtapi-lib"],
+          "options": {
+            "jestConfig": "libs/jwtapi-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "userlist": {
       "projectType": "application",
-      "root": "apps/jwtapi-frontend",
-      "sourceRoot": "apps/jwtapi-frontend/src",
+      "root": "apps/userlist",
+      "sourceRoot": "apps/userlist/src",
       "prefix": "jwtapi-frontend",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/jwtapi-frontend",
-            "index": "apps/jwtapi-frontend/src/index.html",
-            "main": "apps/jwtapi-frontend/src/main.ts",
-            "polyfills": "apps/jwtapi-frontend/src/polyfills.ts",
-            "tsConfig": "apps/jwtapi-frontend/tsconfig.app.json",
+            "outputPath": "dist/apps/userlist",
+            "index": "apps/userlist/src/index.html",
+            "main": "apps/userlist/src/main.ts",
+            "polyfills": "apps/userlist/src/polyfills.ts",
+            "tsConfig": "apps/userlist/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/jwtapi-frontend/src/favicon.ico",
-              "apps/jwtapi-frontend/src/assets"
+              "apps/userlist/src/favicon.ico",
+              "apps/userlist/src/assets"
             ],
-            "styles": ["apps/jwtapi-frontend/src/styles.scss"],
+            "styles": ["apps/userlist/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/jwtapi-frontend/src/environments/environment.ts",
-                  "with": "apps/jwtapi-frontend/src/environments/environment.prod.ts"
+                  "replace": "apps/userlist/src/environments/environment.ts",
+                  "with": "apps/userlist/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -87,61 +112,61 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "jwtapi-frontend:build"
+            "browserTarget": "userlist:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "jwtapi-frontend:build:production"
+              "browserTarget": "userlist:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "jwtapi-frontend:build"
+            "browserTarget": "userlist:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/jwtapi-frontend/src/**/*.ts",
-              "apps/jwtapi-frontend/src/**/*.html"
+              "apps/userlist/src/**/*.ts",
+              "apps/userlist/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/jwtapi-frontend"],
+          "outputs": ["coverage/apps/userlist"],
           "options": {
-            "jestConfig": "apps/jwtapi-frontend/jest.config.js",
+            "jestConfig": "apps/userlist/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "jwtapi-frontend-e2e": {
-      "root": "apps/jwtapi-frontend-e2e",
-      "sourceRoot": "apps/jwtapi-frontend-e2e/src",
+    "userlist-e2e": {
+      "root": "apps/userlist-e2e",
+      "sourceRoot": "apps/userlist-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/jwtapi-frontend-e2e/cypress.json",
-            "tsConfig": "apps/jwtapi-frontend-e2e/tsconfig.e2e.json",
-            "devServerTarget": "jwtapi-frontend:serve"
+            "cypressConfig": "apps/userlist-e2e/cypress.json",
+            "tsConfig": "apps/userlist-e2e/tsconfig.e2e.json",
+            "devServerTarget": "userlist:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "jwtapi-frontend:serve:production"
+              "devServerTarget": "userlist:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/jwtapi-frontend-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/userlist-e2e/**/*.{js,ts}"]
           }
         }
       }

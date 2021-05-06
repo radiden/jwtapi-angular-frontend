@@ -1,0 +1,24 @@
+<form #loginForm="ngForm" (ngSubmit)="login()" ngNativeValidate>
+    <h1 class="center">Zaloguj się</h1>
+    <p class="warning" *ngIf="showError">Wystąpił błąd.</p>
+    <p *ngIf="name.value && name.value.length > 0">Witaj, {{name.value}}!</p>
+    <div [hidden]="submitted">
+        <label for="login">Login: </label>
+        <input #name="ngModel" type="text" id="login" name="login" [(ngModel)]="details.userName" required>
+        <div [hidden]="name.valid || name.pristine">
+            <span class="warning">Login jest wymagany.</span>
+        </div>
+        <label for="password">Hasło: </label>
+        <input #password="ngModel" type="password" id="password" name="password" [(ngModel)]="details.password" required>
+        <div [hidden]="password.valid || password.pristine">
+            <span class="warning">Hasło jest wymagane.</span>
+        </div>
+        <button [disabled]="!loginForm.form.valid">Zaloguj</button>
+    </div>
+    <div [hidden]="!submitted">
+        <span>Logowanie...</span>
+        <p class="warning">Jeśli trwa to dłużej niż 5 sekund prawdopodobnie wystąpił błąd.</p>
+        <p class="warning">Sprawdź swoje połączenie internetowe lub upewnij się, że dane były poprawne.</p>
+        <button (click)="submitted = !submitted">Powrót</button>
+    </div>
+</form>
