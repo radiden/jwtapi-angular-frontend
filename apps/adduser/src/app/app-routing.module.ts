@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent, AuthGuardService } from '@jwtapi-frontend/jwtapi-lib';
+import { AdduserComponent } from './adduser/adduser.component';
 import { FourohfourComponent } from './fourohfour/fourohfour.component';
-import { UserlistComponent } from './userlist/userlist.component';
 
 const routes: Routes = [
 //   { path: 'dashboard', component: DashboardComponent},
 //   { path: 'heroes', component: HeroesComponent },
 //   { path: 'details/:id', component: HeroDetailComponent },
-  { path: '', redirectTo: '/userlist', pathMatch: 'full'},
-  { path: 'login', component: LoginComponent, data: { route: "/userlist" }},
-  { path: 'userlist', component: UserlistComponent, canActivate: [AuthGuardService] },
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent, data: { route: "/adduser" }},
+  { path: 'adduser', component: AdduserComponent, canActivate: [AuthGuardService] },
   { path: '**', component: FourohfourComponent }
 ];
 
@@ -20,6 +20,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
-  
- }
+export class AppRoutingModule { }

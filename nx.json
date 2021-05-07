@@ -14,6 +14,8 @@
   "projects": {
     "jwtapi-lib": { "tags": [] },
     "userlist": { "tags": [] },
-    "userlist-e2e": { "tags": [], "implicitDependencies": ["userlist"] }
+    "userlist-e2e": { "tags": [], "implicitDependencies": ["userlist"] },
+    "adduser": { "tags": [] },
+    "adduser-e2e": { "tags": [], "implicitDependencies": ["adduser"] }
   }
 }

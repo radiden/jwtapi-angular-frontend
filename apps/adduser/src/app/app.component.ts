@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
         <a routerLink="/login">Logowanie</a>      
       </li>
       <li>
-        <a routerLink="/userlist">Lista klientów</a>      
+        <a routerLink="/adduser">Dodaj klientów</a>      
       </li>
     </ul>
   </div>
@@ -17,5 +17,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Lista użytkowników';
+  title = 'Dodaj klienta';
 }

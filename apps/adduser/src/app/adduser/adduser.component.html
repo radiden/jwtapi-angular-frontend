@@ -1,0 +1,9 @@
+<h1>Dodaj klienta</h1>
+
+<p [hidden]="message.content.length < 0" class="{{ message.type }}">{{ message.content }}</p>
+
+<form #loginForm="ngForm" (ngSubmit)="addUser(details)" ngNativeValidate>
+    <input type="text" placeholder="Imię" name="name" [(ngModel)]="details.name">
+    <input type="text" placeholder="Nazwisko" name="surname" [(ngModel)]="details.surname">
+    <button>Dodaj</button>
+</form>

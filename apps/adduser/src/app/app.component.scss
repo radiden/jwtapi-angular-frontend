@@ -1,0 +1,21 @@
+.nav {
+  li {
+    list-style-type: none;
+    display: inline;
+    margin-right: .5em;
+  }
+  ul {
+    :not(a)::after {
+      margin-left: .5em;
+      content: "|";
+    }
+    :last-child::after {
+      margin-left: 0;
+      content: "";
+    }
+  }
+  background-color: rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.5);
+  padding: 1px;
+  border-radius: 8px;
+}

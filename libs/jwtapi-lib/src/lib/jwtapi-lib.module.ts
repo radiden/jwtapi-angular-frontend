@@ -6,7 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule
+  ],
   declarations: [
     LoginComponent
   ],

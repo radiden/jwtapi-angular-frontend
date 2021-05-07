@@ -24,27 +24,16 @@ export class LoginService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  login(details: Login): boolean {
-    localStorage["tokenInfo"] = "{}";
-    if (this.getToken(details).subscribe(combo => {
-      if (combo != null) {
-        localStorage["tokenInfo"] = JSON.stringify(combo);
-        this.router.navigate(['/userlist']);
-      } else {
-        return false;
-      }
-    })) {
-      return true;
-    }
-    return false;
-  }
-
   isLoggedIn(): boolean {
     if (!localStorage["tokenInfo"] || !this.isJson(localStorage["tokenInfo"])) {
       return false;
     }
 
     var tokenInfo: TokenCombo = JSON.parse(localStorage["tokenInfo"]);
+
+    if (!tokenInfo.token || !tokenInfo.refreshToken) {
+      return false;
+    }
 
     if (this.jwtHelper.isTokenExpired(tokenInfo.token)) {
       if (new Date(tokenInfo.refreshExpirationDate).getTime() < new Date().getTime()) {

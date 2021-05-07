@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/jwtapi-frontend',
     '<rootDir>/libs/jwtapi-lib',
     '<rootDir>/apps/userlist',
+    '<rootDir>/apps/adduser',
   ],
 };

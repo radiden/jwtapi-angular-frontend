@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { JwtapiLibModule } from '@jwtapi-frontend/jwtapi-lib';
 import { JwtModule } from '@auth0/angular-jwt';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-import { JwtapiLibModule } from '@jwtapi-frontend/jwtapi-lib';
-import { FourohfourComponent } from './fourohfour/fourohfour.component';
-import { UserlistComponent } from './userlist/userlist.component'
 import { TokenCombo } from 'libs/jwtapi-lib/src/models/tokencombomodel';
+import { FourohfourComponent } from './fourohfour/fourohfour.component';
+import { AdduserComponent } from './adduser/adduser.component';
 
 export function tokenGetter(): string {
   var tokenInfo: TokenCombo = JSON.parse(localStorage["tokenInfo"]);
@@ -18,13 +17,13 @@ export function tokenGetter(): string {
 }
 
 @NgModule({
-  declarations: [AppComponent, FourohfourComponent, UserlistComponent],
+  declarations: [AppComponent, FourohfourComponent, AdduserComponent],
   imports: [
+    FormsModule,
     BrowserModule,
     JwtapiLibModule,
-    AppRoutingModule,
     HttpClientModule,
-    NgxDatatableModule,
+    AppRoutingModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

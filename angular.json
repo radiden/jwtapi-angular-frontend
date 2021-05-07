@@ -170,6 +170,120 @@
           }
         }
       }
+    },
+    "adduser": {
+      "projectType": "application",
+      "root": "apps/adduser",
+      "sourceRoot": "apps/adduser/src",
+      "prefix": "jwtapi-frontend",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/adduser",
+            "index": "apps/adduser/src/index.html",
+            "main": "apps/adduser/src/main.ts",
+            "polyfills": "apps/adduser/src/polyfills.ts",
+            "tsConfig": "apps/adduser/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/adduser/src/favicon.ico",
+              "apps/adduser/src/assets"
+            ],
+            "styles": ["apps/adduser/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/adduser/src/environments/environment.ts",
+                  "with": "apps/adduser/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "adduser:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "adduser:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "adduser:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/adduser/src/**/*.ts",
+              "apps/adduser/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/adduser"],
+          "options": {
+            "jestConfig": "apps/adduser/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "adduser-e2e": {
+      "root": "apps/adduser-e2e",
+      "sourceRoot": "apps/adduser-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/adduser-e2e/cypress.json",
+            "tsConfig": "apps/adduser-e2e/tsconfig.e2e.json",
+            "devServerTarget": "adduser:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "adduser:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/adduser-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   }
 }
